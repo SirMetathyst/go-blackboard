@@ -13,7 +13,7 @@ func (bb *BB) SetStringSliceP(key string, value *[]string) {
 
 // SetStringSliceP ...
 func SetStringSliceP(key string, value *[]string) {
-	blackboard.SetStringSliceP(key, value)
+	Singleton().SetStringSliceP(key, value)
 }
 
 // SetStringSlice ...
@@ -23,7 +23,7 @@ func (bb *BB) SetStringSlice(key string, value []string) {
 
 // SetStringSlice ...
 func SetStringSlice(key string, value []string) {
-	blackboard.SetStringSlice(key, value)
+	Singleton().SetStringSlice(key, value)
 }
 
 // StringSliceP ...
@@ -41,7 +41,7 @@ func (bb *BB) StringSliceP(key string) *[]string {
 
 // StringSliceP ...
 func StringSliceP(key string) *[]string {
-	return blackboard.StringSliceP(key)
+	return Singleton().StringSliceP(key)
 }
 
 // AllStringSlice ...
@@ -57,5 +57,5 @@ func (bb *BB) AllStringSlice() []KSS {
 
 // AllStringSlice ...
 func AllStringSlice() []KSS {
-	return blackboard.AllStringSlice()
+	return Singleton().AllStringSlice()
 }

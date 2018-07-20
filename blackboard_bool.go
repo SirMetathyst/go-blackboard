@@ -13,7 +13,7 @@ func (bb *BB) SetBoolP(key string, value *bool) {
 
 // SetBoolP ...
 func SetBoolP(key string, value *bool) {
-	blackboard.SetBoolP(key, value)
+	Singleton().SetBoolP(key, value)
 }
 
 // SetBool ...
@@ -23,7 +23,7 @@ func (bb *BB) SetBool(key string, value bool) {
 
 // SetBool ...
 func SetBool(key string, value bool) {
-	blackboard.SetBool(key, value)
+	Singleton().SetBool(key, value)
 }
 
 // BoolP ...
@@ -41,7 +41,7 @@ func (bb *BB) BoolP(key string) *bool {
 
 // BoolP ...
 func BoolP(key string) *bool {
-	return blackboard.BoolP(key)
+	return Singleton().BoolP(key)
 }
 
 // AllBool ...
@@ -57,5 +57,5 @@ func (bb *BB) AllBool() []KB {
 
 // AllBool ...
 func AllBool() []KB {
-	return blackboard.AllBool()
+	return Singleton().AllBool()
 }

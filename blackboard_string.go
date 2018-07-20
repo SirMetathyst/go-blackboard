@@ -13,7 +13,7 @@ func (bb *BB) SetStringP(key string, value *string) {
 
 // SetStringP ...
 func SetStringP(key string, value *string) {
-	blackboard.SetStringP(key, value)
+	Singleton().SetStringP(key, value)
 }
 
 // SetString ...
@@ -23,7 +23,7 @@ func (bb *BB) SetString(key string, value string) {
 
 // SetString ...
 func SetString(key string, value string) {
-	blackboard.SetString(key, value)
+	Singleton().SetString(key, value)
 }
 
 // StringP ...
@@ -41,7 +41,7 @@ func (bb *BB) StringP(key string) *string {
 
 // StringP ...
 func StringP(key string) *string {
-	return blackboard.StringP(key)
+	return Singleton().StringP(key)
 }
 
 // AllString ...
@@ -57,5 +57,5 @@ func (bb *BB) AllString() []KS {
 
 // AllString ...
 func AllString() []KS {
-	return blackboard.AllString()
+	return Singleton().AllString()
 }

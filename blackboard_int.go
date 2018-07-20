@@ -13,7 +13,7 @@ func (bb *BB) SetIntP(key string, value *int) {
 
 // SetIntP ...
 func SetIntP(key string, value *int) {
-	blackboard.SetIntP(key, value)
+	Singleton().SetIntP(key, value)
 }
 
 // SetInt ...
@@ -23,7 +23,7 @@ func (bb *BB) SetInt(key string, value int) {
 
 // SetInt ...
 func SetInt(key string, value int) {
-	blackboard.SetInt(key, value)
+	Singleton().SetInt(key, value)
 }
 
 // IntP ...
@@ -41,7 +41,7 @@ func (bb *BB) IntP(key string) *int {
 
 // IntP ...
 func IntP(key string) *int {
-	return blackboard.IntP(key)
+	return Singleton().IntP(key)
 }
 
 // AllInt ...
@@ -57,5 +57,5 @@ func (bb *BB) AllInt() []KI {
 
 // AllInt ...
 func AllInt() []KI {
-	return blackboard.AllInt()
+	return Singleton().AllInt()
 }
