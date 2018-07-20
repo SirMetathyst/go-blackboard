@@ -2,6 +2,12 @@
 
 Go Blackboard is a simple key/value store inspired by go's flag package.
 
+## Installation
+
+```
+go get -u github.com/SirMetathyst/go-blackboard
+```
+
 ## Supported Types
 
  * ```string```
@@ -36,6 +42,7 @@ func main() {
 ```
 
 ### []String
+
 ```go
 SetStringSliceP(key string, value *[]string)
 SetStringSlice(key string, value []string)
@@ -44,6 +51,7 @@ AllStringSlice() []KSS
 ```
 
 ### String
+
 ```go
 SetStringP(key string, value *string)
 SetString(key string, value string)
@@ -52,6 +60,7 @@ AllString() []KS
 ```
 
 ### Bool
+
 ```go
 SetBoolP(key string, value *bool)
 SetBool(key string, value bool)
@@ -60,15 +69,10 @@ AllBool() []KB
 ```
 
 ### Int
+
 ```go
 SetIntP(key string, value *int)
 SetInt(key string, value int)
 IntP(key string) *int
 AllInt() []KI
-```
-
-## Installation
-
-```
-go get -u github.com/SirMetathyst/go-blackboard
 ```
