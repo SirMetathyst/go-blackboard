@@ -28,11 +28,15 @@ func SetStringSlice(key string, value []string) {
 
 // StringSliceP ...
 func (bb *BB) StringSliceP(key string) *[]string {
-	i, ok := bb.Value(key)
+	i, kok := bb.Value(key)
+	if !kok {
+		return nil
+	}
+	value, ok := i.(*[]string)
 	if !ok {
 		return nil
 	}
-	return i.(*[]string)
+	return value
 }
 
 // StringSliceP ...
