@@ -11,12 +11,12 @@ func NewBlackboard() *BB {
 }
 
 var (
-	blackboard = NewBlackboard()
+	bb = NewBlackboard()
 )
 
 // Singleton ...
 func Singleton() *BB {
-	return blackboard
+	return bb
 }
 
 // SetValue ...
@@ -26,7 +26,7 @@ func (bb *BB) SetValue(key string, value interface{}) {
 
 // SetValue ...
 func SetValue(key string, value interface{}) {
-	blackboard.SetValue(key, value)
+	Singleton().SetValue(key, value)
 }
 
 // Value ...
@@ -37,5 +37,5 @@ func (bb *BB) Value(key string) (v interface{}, ok bool) {
 
 // Value ...
 func Value(key string) (interface{}, bool) {
-	return blackboard.Value(key)
+	return Singleton().Value(key)
 }
