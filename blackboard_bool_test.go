@@ -10,9 +10,9 @@ func TestBlackboardBool(t *testing.T) {
 
 	Convey("when given a new blackboard", t, func() {
 		bb := NewBlackboard()
-		Convey("when retrieving a non-existing Bool pointer with key `notexist`", func() {
+		Convey("and retrieving a non-existing `bool` with key `notexist`", func() {
 			b := bb.BoolP("notexist")
-			Convey("Bool pointer should be nil", func() {
+			Convey("should be nil", func() {
 				So(b, ShouldBeNil)
 			})
 		})
@@ -20,65 +20,62 @@ func TestBlackboardBool(t *testing.T) {
 
 	Convey("when given a new blackboard", t, func() {
 		bb := NewBlackboard()
-		Convey("when using SetBool with key `exist` and value `true`", func() {
-			bb.SetBool("exist", true)
-			Convey("when retrieving an existing Bool pointer with key `exist`", func() {
-				b := bb.BoolP("exist")
-				Convey("Bool pointer should not be nil", func() {
+		Convey("and setting a value with key `exist` and value `10`", func() {
+			bb.SetValue("exist", 10)
+			Convey("retrieving the value as a `bool`", func() {
+				i := bb.BoolP("exist")
+				Convey("should be nil", func() {
+					So(i, ShouldBeNil)
+				})
+			})
+		})
+	})
+
+	Convey("when using the blackboard global methods", t, func() {
+		Convey("and setting a `bool` with key `exist1` and value `true`", func() {
+			SetBool("exist1", true)
+			Convey("retrieving the value as a `bool`", func() {
+				b := BoolP("exist1")
+				Convey("should not be nil", func() {
 					So(b, ShouldNotBeNil)
 				})
-				Convey("Bool should be `true`", func() {
+				Convey("should equal `true`", func() {
 					So(*b, ShouldBeTrue)
 				})
 			})
 		})
 	})
 
-	Convey("when given a new blackboard", t, func() {
-		bb := NewBlackboard()
-		Convey("when using SetBoolP with key `exist` and value `true`", func() {
+	Convey("when using the blackboard global methods", t, func() {
+		Convey("and setting a `bool` with key `exist2` and value `true` using a `bool` pointer", func() {
 			v := true
-			bb.SetBoolP("exist", &v)
-			Convey("when retrieving an existing Bool pointer with key `exist`", func() {
-				b := bb.BoolP("exist")
-				Convey("Bool pointer should not be nil", func() {
+			SetBoolP("exist2", &v)
+			Convey("retrieving the value as a `bool`", func() {
+				b := BoolP("exist2")
+				Convey("should not be nil", func() {
 					So(b, ShouldNotBeNil)
 				})
-				Convey("Bool should be `true`", func() {
+				Convey("should equal `true`", func() {
 					So(*b, ShouldBeTrue)
 				})
 			})
 		})
 	})
 
-	Convey("when given a new blackboard", t, func() {
-		bb := NewBlackboard()
-		Convey("when using SetBoolP with key `exist` and value `true`", func() {
+	Convey("when using the blackboard global methods", t, func() {
+		Convey("and setting an existing `bool` with key `exist3` and value `true` using a `bool` pointer", func() {
 			v := true
-			bb.SetBoolP("exist", &v)
-			Convey("when retrieving existing Bool pointers with AllBool", func() {
-				kbl := bb.AllBool()
-				Convey("KeyBool slice should not be nil", func() {
+			SetBoolP("exist3", &v)
+			Convey("retrieving all `bool` values", func() {
+				kbl := AllBool()
+				Convey("the slice should not be nil", func() {
 					So(kbl, ShouldNotBeNil)
 				})
-				Convey("KeyBool slice should have length of 1", func() {
-					So(len(kbl), ShouldEqual, 1)
+				Convey("the slice should have length of 3", func() {
+					So(len(kbl), ShouldEqual, 3)
 				})
-				Convey("KeyBool slice should contain {`exist`, correct Bool pointer}", func() {
-					So(kbl, ShouldContain, KB{"exist", &v})
-				})
-			})
-		})
-	})
-
-	Convey("when given a new blackboard", t, func() {
-		bb := NewBlackboard()
-		Convey("when using SetValue with key `exist` and value `1`", func() {
-			bb.SetValue("exist", 1)
-			Convey("when retrieving value as Bool pointer with key `exist`", func() {
-				b := bb.BoolP("exist")
-				Convey("Bool pointer should be nil", func() {
-					So(b, ShouldBeNil)
+				Convey("the slice should contain {`exist3`, correct pointer}", func() {
+					So(kbl, ShouldContain, KB{"exist3", &v})
 				})
 			})
 		})

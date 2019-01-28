@@ -10,9 +10,9 @@ func TestBlackboardString(t *testing.T) {
 
 	Convey("when given a new blackboard", t, func() {
 		bb := NewBlackboard()
-		Convey("when retrieving a non-existing String pointer with key `notexist`", func() {
+		Convey("and retrieving a non-existing `string` with key `notexist`", func() {
 			s := bb.StringP("notexist")
-			Convey("String pointer should be nil", func() {
+			Convey("should be nil", func() {
 				So(s, ShouldBeNil)
 			})
 		})
@@ -20,65 +20,62 @@ func TestBlackboardString(t *testing.T) {
 
 	Convey("when given a new blackboard", t, func() {
 		bb := NewBlackboard()
-		Convey("when using SetString with key `exist` and value `test`", func() {
-			bb.SetString("exist", "test")
-			Convey("when retrieving an existing String pointer with key `exist`", func() {
+		Convey("and setting a value with key `exist` and value `1`", func() {
+			bb.SetValue("exist", 1)
+			Convey("retrieving the value as a `string`", func() {
 				s := bb.StringP("exist")
-				Convey("String pointer should not be nil", func() {
-					So(s, ShouldNotBeNil)
-				})
-				Convey("String should equal `true`", func() {
-					So(*s, ShouldEqual, "test")
+				Convey("should be nil", func() {
+					So(s, ShouldBeNil)
 				})
 			})
 		})
 	})
 
-	Convey("when given a new blackboard", t, func() {
-		bb := NewBlackboard()
-		Convey("when using SetStringP with key `exist` and value `test`", func() {
-			v := "test"
-			bb.SetStringP("exist", &v)
-			Convey("when retrieving an existing String pointer with key `exist`", func() {
-				s := bb.StringP("exist")
-				Convey("String pointer should not be nil", func() {
+	Convey("when using the blackboard global methods", t, func() {
+		Convey("and setting a `string` with key `exist1` and value `test1`", func() {
+			SetString("exist1", "test1")
+			Convey("retrieving the value as a `string`", func() {
+				s := StringP("exist1")
+				Convey("should not be nil", func() {
 					So(s, ShouldNotBeNil)
 				})
-				Convey("String should equal `test`", func() {
-					So(*s, ShouldEqual, "test")
+				Convey("should equal `test1`", func() {
+					So(*s, ShouldEqual, "test1")
 				})
 			})
 		})
 	})
 
-	Convey("when given a new blackboard", t, func() {
-		bb := NewBlackboard()
-		Convey("when using SetStringP with key `exist` and value `test`", func() {
-			v := "test"
-			bb.SetStringP("exist", &v)
-			Convey("when retrieving existing String pointers with AllString", func() {
-				ksl := bb.AllString()
-				Convey("KeyString slice should not be nil", func() {
+	Convey("when using the blackboard global methods", t, func() {
+		Convey("and setting a `string` with key `exist2` and value `test2` using a `string` pointer", func() {
+			v := "test2"
+			SetStringP("exist2", &v)
+			Convey("retrieving the value as a `string`", func() {
+				s := StringP("exist2")
+				Convey("should not be nil", func() {
+					So(s, ShouldNotBeNil)
+				})
+				Convey("should equal `test2`", func() {
+					So(*s, ShouldEqual, "test2")
+				})
+			})
+		})
+	})
+
+	Convey("when using the blackboard global methods", t, func() {
+		Convey("and setting an existing `string` with key `exist3` and value `test3` using a `string` pointer", func() {
+			v := "test3"
+			SetStringP("exist3", &v)
+			Convey("retrieving all `string` values", func() {
+				ksl := AllString()
+				Convey("the slice should not be nil", func() {
 					So(ksl, ShouldNotBeNil)
 				})
-				Convey("KeyString slice should have length of 1", func() {
-					So(len(ksl), ShouldEqual, 1)
+				Convey("the slice should have length of 3", func() {
+					So(len(ksl), ShouldEqual, 3)
 				})
-				Convey("KeyString slice should contain {`exist`, correct String pointer}", func() {
-					So(ksl, ShouldContain, KS{"exist", &v})
-				})
-			})
-		})
-	})
-
-	Convey("when given a new blackboard", t, func() {
-		bb := NewBlackboard()
-		Convey("when using SetValue with key `exist` and value `1`", func() {
-			bb.SetValue("exist", 1)
-			Convey("when retrieving value as String pointer with key `exist`", func() {
-				s := bb.StringP("exist")
-				Convey("String pointer should be nil", func() {
-					So(s, ShouldBeNil)
+				Convey("the slice should contain {`exist3`, correct pointer}", func() {
+					So(ksl, ShouldContain, KS{"exist3", &v})
 				})
 			})
 		})
