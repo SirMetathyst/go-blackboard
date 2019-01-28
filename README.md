@@ -10,14 +10,17 @@ go get -u github.com/SirMetathyst/go-blackboard
 
 ## Supported Types
 
- * ```string```
  * ```[]string```
+ * ```string```
  * ```bool```
  * ```int```
 
 ## Example
 
 ```go
+
+import "github.com/SirMetathyst/go-blackboard"
+
 func main() {
     bb := blackboard.NewBlackboard()
 
@@ -31,13 +34,16 @@ func main() {
 ```
 
 ```go
+
+import . "github.com/SirMetathyst/go-blackboard"
+
 func main() {
     s := "my_string_value"
-    blackboard.SetStringP("my_string", &s)
-    blackboard.SetString("another_string", "value")
+    SetStringP("my_string", &s)
+    SetString("another_string", "value")
 
-    fmt.Println(*blackboard.StringP("my_string"))
-    fmt.Println(*blackboard.StringP("another_string"))
+    fmt.Println(*StringP("my_string"))
+    fmt.Println(*StringP("another_string"))
 }
 ```
 
