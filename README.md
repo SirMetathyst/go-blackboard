@@ -19,7 +19,9 @@ go get -u github.com/SirMetathyst/go-blackboard
 
 ```go
 
-import "github.com/SirMetathyst/go-blackboard"
+import (
+    blackboard "github.com/SirMetathyst/go-blackboard"
+)
 
 func main() {
     bb := blackboard.NewBlackboard()
@@ -35,7 +37,9 @@ func main() {
 
 ```go
 
-import . "github.com/SirMetathyst/go-blackboard"
+import (
+    . "github.com/SirMetathyst/go-blackboard"
+)
 
 func main() {
     s := "my_string_value"
